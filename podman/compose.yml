@@ -1,0 +1,28 @@
+services:
+  db-server:
+    image: postgres:16
+    container_name: db-server
+    environment:
+      POSTGRES_USER: test
+      POSTGRES_PASSWORD: test
+      POSTGRES_DB: applications
+    ports:
+      - "5432:5432"     # datasource for quarkus-ai-mcp-applications
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:26.7.1
+    container_name: keycloak
+    command: start-dev
+    environment:
+      KC_BOOTSTRAP_ADMIN_USERNAME: admin
+      KC_BOOTSTRAP_ADMIN_PASSWORD: admin
+    ports:
+      - "8081:8080"     # issuer for agentgateway/config-auth.yaml
+
+  jaeger:
+    image: jaegertracing/jaeger:latest
+    container_name: jaeger
+    ports:
+      - "4317:4317"     # OTLP gRPC (traces from Quarkus + agentgateway)
+      - "4318:4318"     # OTLP HTTP
+      - "16686:16686"   # Jaeger UI

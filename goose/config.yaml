@@ -1,0 +1,16 @@
+config:
+  adminAddr: localhost:15000
+  tracing:
+    otlpEndpoint: http://localhost:4317
+    otlpProtocol: grpc
+    randomSampling: 1.0
+    
+extensions:
+  applications-tools:
+    enabled: true
+    type: http
+    name: applications-tools
+    uri: http://localhost:3000/mcp
+    headers:
+      Content-Type: "application/json"
+      Authorization: "Bearer <token>"
