@@ -36,7 +36,7 @@ That trace is also the audit trail: one ID tying a prompt to every policy decisi
 
 Security and observability here are configuration and a sidecar, not business logic. Add a tool and it inherits the policy automatically. That separation is what makes governance reviewable, and changeable without redeploying the service doing the work.
 
-Repo: [add link]
+Repo: [https://github.com/anmiralles/quarks-ai-governed-mcp]
 
 Adapted from Daniel Oh's Governed Agent Platform workshop.
 
